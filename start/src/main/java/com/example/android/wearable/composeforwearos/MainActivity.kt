@@ -17,9 +17,25 @@ import com.example.android.wearable.composeforwearos.theme.WearAppTheme
 import com.google.android.horologist.compose.layout.ColumnItemType
 import com.google.android.horologist.compose.layout.rememberResponsiveColumnPadding
 
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
+import com.example.android.wearable.composeforwearos.workers.BlogNotificationWorker
+import java.util.concurrent.TimeUnit
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val workRequest = PeriodicWorkRequestBuilder<BlogNotificationWorker>(
+            15, TimeUnit.MINUTES // mínimo intervalo permitido
+        ).build()
+
+        WorkManager.getInstance(applicationContext).enqueueUniquePeriodicWork(
+            "BlogNotificationWork",
+            ExistingPeriodicWorkPolicy.KEEP,
+            workRequest
+        )
+
         setContent {
             WearApp()
         }

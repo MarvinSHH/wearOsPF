@@ -91,4 +91,25 @@ dependencies {
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     debugImplementation(composeBom)
+
+    //DEPENDENCIAS PARA CONECTAR CON DB
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+    // Lifecycle ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation ("androidx.work:work-runtime-ktx:2.8.1")
+    implementation ("androidx.wear:wear:1.3.0")
+    implementation ("androidx.wear.tiles:tiles-material:1.2.0-alpha04")
+    implementation ("androidx.wear.tiles:tiles:1.2.0-alpha04")
+    implementation ("com.google.accompanist:accompanist-permissions:0.30.1")
+
+    // Notificaciones
+    implementation ("androidx.core:core-ktx:1.12.0")
 }
